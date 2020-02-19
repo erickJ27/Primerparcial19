@@ -10,6 +10,7 @@ namespace primerparcial19.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             base.OnConfiguring(optionsBuilder.UseSqlite(@"Data source=Database/primerparcial.db"));
         }
     }
