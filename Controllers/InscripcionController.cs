@@ -47,7 +47,7 @@ namespace primerparcial19.Controllers
 
             Contexto db = new Contexto();
             Inscripciones ins;
-            ins = db.Find(Id);
+            ins = db.Incripcion.Find(Id);
 
             return ins;
 
