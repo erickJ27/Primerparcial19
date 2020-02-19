@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using primerparcial19.Models;
 using primerparcial19.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace primerparcial19.Controllers
 {
@@ -52,6 +53,27 @@ namespace primerparcial19.Controllers
             return ins;
 
         }
+        public bool Eliminar(int Id)
+        {
+            bool paso = false;
+            Contexto db = new Contexto();
+            Inscripciones inscripciones=db.Incripcion.Find(Id);
+            db.Entry(inscripciones).State = EntityState.Deleted;
+            paso = db.SaveChanges() > 0;
+
+            return paso;
+
+        }
+        public List<Inscripciones> GetList(Expression<Func<Inscripciones, bool>> expression)
+        {
+            List<Inscripciones> lista = new List<Inscripciones>();
+            Contexto db = new Contexto();
+
+            lista = db.Incripcion.Where(expression).ToList();
+
+            return lista;
+        }
+
 
     }
 }
